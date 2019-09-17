@@ -1,0 +1,67 @@
+{
+  "name": "vue-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.js",
+  "scripts": {
+    "dev": "rimraf dist && webpack-dev-server",
+    "build": "rimraf dist && webpack --production --progress && rimraf dist/assets/css/**/*.js"
+  },
+  "author": "Javier Puche",
+  "license": "MIT",
+  "bugs": {
+      "url": "https://github.com/javipuche/vue-boilerplate/issues"
+  },
+  "homepage": "https://github.com/javipuche/vue-boilerplate#readme",
+  "repository": {
+      "type": "git",
+      "url": "git+https://github.com/javipuche/vue-boilerplate.git"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%"
+  ],
+  "devDependencies": {
+    "eslint": "^6.1.0",
+    "eslint-config-standard": "^13.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^5.2.3",
+    "stylelint": "^10.1.0",
+    "stylelint-config-standard-scss": "^1.1.0",
+    "stylelint-scss": "^3.10.0",
+    "webpack-cli": "^3.3.8"
+  },
+  "dependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "autoprefixer": "^9.6.1",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "fibers": "^4.0.1",
+    "file-loader": "^4.2.0",
+    "glob": "^7.1.4",
+    "highlight.js": "^9.15.10",
+    "html-webpack-plugin": "^3.2.0",
+    "image-webpack-loader": "^6.0.0",
+    "js-beautify": "^1.10.2",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.12.0",
+    "path": "^0.12.7",
+    "postcss": "^7.0.18",
+    "postcss-loader": "^3.0.0",
+    "sass": "^1.22.12",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0",
+    "terser-webpack-plugin": "^2.0.1",
+    "vue": "^2.6.10",
+    "vue-loader": "^15.7.1",
+    "vue-meta": "^2.2.2",
+    "vue-router": "^3.1.3",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.40.2",
+    "webpack-dev-server": "^3.8.0"
+  }
+}
