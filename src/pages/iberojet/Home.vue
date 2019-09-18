@@ -1,9 +1,6 @@
 <template>
-    <Layout>
-        <div class="home">
-            <div>sadasd</div>
-            <img src="@/assets/images/water.jpg" alt="" asda="" asdasd="sadsd">
-        </div>
+    <Layout brand="iberojet">
+        home iberojet
     </Layout>
 </template>
 
@@ -16,11 +13,7 @@
             Layout
         },
         metaInfo: {
-            title: 'My Example App',
-            titleTemplate: '%s - Yay!',
-            link: [
-                // { rel: 'stylesheet', href: '/css/index.css' }
-            ]
+            title: 'Home'
         }
     }
 </script>

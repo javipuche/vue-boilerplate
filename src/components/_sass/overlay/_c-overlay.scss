@@ -1,0 +1,43 @@
+/* -----------------------------------------------------------------------------
+ * OVERLAY
+ */
+
+@keyframes showOverlay {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.c-overlay {
+  --c-overlay-background-color: var(--color-shade-2000-opacity-50);
+  --c-overlay-cursor: url("data:image/svg+xml,%0A%3Csvg width='25px' height='25px' viewBox='0 0 25 25' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cpolygon id='svg_2' fill='%23FFFFFF' fill-rule='nonzero' points='24.4570313 1.92028286 23.0329022 0.494382454 12.4574249 11.0572638 1.88844243 0.4882813 0.463329273 1.91339445 11.0316229 12.4813929 0.4570313 23.043487 1.88135722 24.4695842 12.4567361 13.9065061 23.0260138 24.4756854 24.4509301 23.050769 13.8825381 12.4823769'%3E%3C/polygon%3E%3C/g%3E%3C/svg%3E"), pointer;
+
+  position: relative;
+  overflow-y: hidden;
+
+  &::after {
+    content: "";
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: var(--c-overlay-background-color);
+    cursor: var(--c-overlay-cursor);
+    animation-name: showOverlay;
+    animation-duration: 0.3s;
+  }
+
+  @each $name, $z-index in $f-z-index {
+    &--#{$name} {
+      &::after {
+        z-index: $z-index;
+      }
+    }
+  }
+}

@@ -1,0 +1,49 @@
+/* -----------------------------------------------------------------------------
+ * CONFIG
+ *
+ * @settings            - Configuración básica del proyecto
+ * @tools               - Mixins de sass
+ * @foundations         - Variables base
+ */
+
+@import "~scss/settings/settings";
+@import "~scss/tools/tools";
+@import "~scss/foundations/foundations";
+
+/* -----------------------------------------------------------------------------
+ * VENDORS
+ */
+
+@import "~scss/vendor/vendor";
+
+/* -----------------------------------------------------------------------------
+ * BASE
+ */
+
+@import "~scss/generic/generic";
+@import "~scss/elements/elements";
+
+/* -----------------------------------------------------------------------------
+ * ABSTRACTIONS
+ */
+
+@import "~scss/animations/animations";
+
+/* -----------------------------------------------------------------------------
+ * CONTENT
+ */
+
+@import "~scss/components/components";
+
+/* -----------------------------------------------------------------------------
+ * SCOPES
+ */
+
+@import "~scss/scopes/scopes";
+
+/* -----------------------------------------------------------------------------
+ * OVERRIDES
+ */
+
+@import "~scss/utilities/utilities";
+@import "~scss/app/iberojet/variables";

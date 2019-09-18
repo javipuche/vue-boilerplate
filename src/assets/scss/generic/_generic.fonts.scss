@@ -1,0 +1,41 @@
+/* -----------------------------------------------------------------------------
+ * FONTS
+ * -----------------------------------------------------------------------------
+ * Explicación mapa:
+ *
+ * "Nombre de familia que se usará en el css": (
+ *   "Nombre del archivo": (font weight, font style, nombre local),
+ * )
+ */
+
+$fonts-families: (
+  "Lato": (
+    "Lato-Hairline": (100, normal, "Lato-Hairline"),
+    "Lato-Thin": (200, normal, "Lato-Thin"),
+    "Lato-Light": (300, normal, "Lato-Light"),
+    "Lato-Regular": (400, normal, "Lato-Regular"),
+    "Lato-Medium": (500, normal, "Lato-Medium"),
+    "Lato-Semibold": (600, normal, "Lato-Semibold"),
+    "Lato-Bold": (700, normal, "Lato-Bold"),
+    "Lato-Heavy": (800, normal, "Lato-Heavy"),
+    "Lato-Black": (900, normal, "Lato-Black")
+  ),
+  "Icons": (
+    "icons": (400, normal, "icons")
+  )
+);
+
+@each $font-family, $fonts in $fonts-families {
+  @each $font, $opts in $fonts {
+    @font-face {
+      font-family: $font-family;
+      src:
+        local(nth($opts, 3)),
+        url('~fonts/#{$font}.woff2') format('woff2'),
+        url('~fonts/#{$font}.woff') format('woff');
+      font-weight: nth($opts, 1);
+      font-style: nth($opts, 2);
+      font-display: swap;
+    }
+  }
+}

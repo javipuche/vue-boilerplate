@@ -12,9 +12,8 @@ const getPath = (entries, path, outpath) => {
 }
 
 const entries = () => {
-    const scss = getPath(glob.sync('./src/assets/scss/[^_]*.scss'), 'src/assets/scss', 'assets/css')
-    const js = getPath(glob.sync('./src/assets/js/[^_]*.js'), 'src/assets/js', 'assets/js')
-    console.log(scss)
+    const scss = getPath(glob.sync('./src/assets/scss/app/**/[^_]*.scss'), 'src/assets/scss/app', 'assets/css')
+    const js = getPath(glob.sync('./src/assets/js/app/**/[^_]*.js'), 'src/assets/js/app', 'assets/js')
 
     return Object.assign(scss, js)
 }

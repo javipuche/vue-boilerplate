@@ -1,0 +1,23 @@
+/* -----------------------------------------------------------------------------
+ * HOTEL NAME
+ */
+
+.c-hotel-name {
+  --c-hotel-name-color: var(--color-primary-100);
+  --c-hotel-font-weight: var(--font-weight-bold);
+
+  color: var(--c-hotel-name-color);
+  font-weight: var(--c-hotel-font-weight);
+
+  &__inner {
+    display: flex;
+  }
+
+  &__text {
+
+  }
+
+  &__icon {
+
+  }
+}

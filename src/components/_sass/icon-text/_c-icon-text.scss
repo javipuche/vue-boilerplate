@@ -1,0 +1,30 @@
+/* -----------------------------------------------------------------------------
+ * ICON TEXT
+ */
+
+.c-icon-text {
+  $this: &;
+
+  --c-icon-text-grid-template-columns: auto 1fr;
+  --c-icon-text-grid-template-areas: "icon text";
+  --c-icon-text-grid-gap: 0.5em;
+
+  &--has-icon-right {
+    --c-icon-text-grid-template-areas: "text icon";
+  }
+
+  &__inner {
+    display: grid;
+    grid-template-columns: var(--c-icon-text-grid-template-columns);
+    grid-template-areas: var(--c-icon-text-grid-template-areas);
+    grid-column-gap: var(--c-icon-text-grid-gap);
+  }
+
+  &__text {
+    grid-area: text;
+  }
+
+  &__icon {
+    grid-area: icon;
+  }
+}

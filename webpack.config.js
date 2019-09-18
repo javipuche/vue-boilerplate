@@ -3,12 +3,14 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin')
 const entries = require('./config/entries')
 
 const isProduction = process.argv.indexOf('--production') >= 0
 
 const webpackConfig = () => {
     let options = {
+        stats: 'minimal',
         entry: Object.assign(
             {
                 'bundle/bundle': './src/main.js'
@@ -23,7 +25,14 @@ const webpackConfig = () => {
         resolve: {
             extensions: ['.scss', '.css', '.js', '.json', '.vue'],
             alias: {
-                '@': resolve('./src')
+                '@': resolve('./src'),
+                scss: resolve('./src/assets/scss'),
+                fonts: resolve('./src/assets/fonts'),
+                images: resolve('./src/assets/images'),
+                components: resolve('./src/components'),
+                modules: resolve('./src/assets/js/modules'),
+                utils: resolve('./src/assets/js/utils'),
+                node_modules: resolve('./node_modules')
             }
         },
         module: {
@@ -115,10 +124,11 @@ const webpackConfig = () => {
                 filename: `[name].css`
             }),
             new HtmlWebpackPlugin({
-                title: 'Webpack Boilerplate',
                 template: './src/index.html',
-                filename: 'index.html'
+                filename: 'index.html',
+                excludeAssets: [/styles.*.(css|js)/]
             }),
+            new HtmlWebpackExcludeAssetsPlugin(),
             new VueLoaderPlugin()
         ],
         performance: {
@@ -135,7 +145,7 @@ const webpackConfig = () => {
                 open: true,
                 compress: false,
                 hot: true,
-                port: 8080
+                port: 3000
             }
         })
     }

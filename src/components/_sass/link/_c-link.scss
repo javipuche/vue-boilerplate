@@ -1,0 +1,16 @@
+.c-link {
+  text-decoration: underline;
+  color: var(--color-quaternary);
+  transition: color 0.3s;
+
+  &.is-active,
+  &:active,
+  &:focus,
+  &:hover {
+    color: var(--color-quaternary-dark);
+  }
+
+  &__text {
+
+  }
+}

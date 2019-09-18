@@ -1,0 +1,80 @@
+@mixin c-form--booking-transfers($this) {
+  &--booking-transfers {
+    #{$this}__items {
+      @include breakpoint(s) {
+        --c-form-grid-template-columns: repeat(2, 1fr);
+        --c-form-grid-template-areas:
+          "radio-list   ."
+          "origin       destination"
+          "arrival-date exit-date"
+          "arrival-hour exit-hour"
+          "pax          pax"
+          "button       button";
+      }
+
+      @include breakpoint(768px) {
+        --c-form-grid-template-columns: repeat(4, 1fr);
+        --c-form-grid-template-areas:
+          "radio-list    .            .           ."
+          "origin        origin       destination destination"
+          "arrival-date  arrival-hour exit-date   exit-hour"
+          "pax           pax          button      button";
+      }
+
+      @include breakpoint(1000px) {
+        --c-form-grid-template-columns: repeat(6, 1fr);
+        --c-form-grid-template-areas:
+          "radio-list   .            .         .           .           ."
+          "origin       origin       origin    destination destination destination"
+          "arrival-date arrival-hour exit-date exit-hour   pax         button";
+      }
+    }
+
+    #{$this}__item {
+      @include breakpoint(s) {
+        &--radio-list {
+          display: grid;
+          grid-area: radio-list;
+          grid-column: 1 / span 2;
+          grid-gap: var(--space-xs);
+          grid-template-columns: repeat(auto-fill, 120px);
+          @include breakpoint(1000px) {
+            color: #ffffff;
+          }
+        }
+
+        &--origin {
+          grid-area: origin;
+        }
+
+        &--destination {
+          grid-area: destination;
+        }
+
+        &--arrival-date {
+          grid-area: arrival-date;
+        }
+
+        &--arrival-hour {
+          grid-area: arrival-hour;
+        }
+
+        &--exit-date {
+          grid-area: exit-date;
+        }
+
+        &--exit-hour {
+          grid-area: exit-hour;
+        }
+
+        &--pax {
+          grid-area: pax;
+        }
+
+        &--button {
+          grid-area: button;
+        }
+      }
+    }
+  }
+}

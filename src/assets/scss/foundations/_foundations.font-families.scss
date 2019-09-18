@@ -1,0 +1,17 @@
+/* -----------------------------------------------------------------------------
+ * FONT FAMILIES
+ */
+
+@mixin f-font-families {
+  --font-family-primary: 'Lato', sans-serif;
+  --font-family-secondary: Georgia;
+  --font-family-icons: 'Icons';
+}
+
+// Map
+
+$f-font-families: (
+  'primary': var(--font-family-primary),
+  'secondary': var(--font-family-secondary),
+  'icons': var(--font-family-icons)
+) !default;

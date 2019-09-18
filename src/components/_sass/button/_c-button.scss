@@ -1,0 +1,126 @@
+/* -----------------------------------------------------------------------------
+ * BUTTON
+ */
+
+/* Mixins
+ * -------------------------------------------------------------------------- */
+
+@mixin c-button-hover($this) {
+  #{$this}--is-active:not(:disabled):not(&--is-disabled),
+  &:active:not(:disabled):not(&--is-disabled),
+  &:focus:not(:disabled):not(&--is-disabled),
+  &:hover:not(:disabled):not(&--is-disabled) {
+    @content;
+  }
+}
+
+/* Output
+ * -------------------------------------------------------------------------- */
+
+.c-button {
+  $this: &;
+
+  --c-button-background-color: var(--color-primary);
+  --c-button-font-size: var(--font-size-m);
+  --c-button-color: var(--color-shade-0);
+  --c-button-border-separation: 0em;
+  --c-button-padding: 0.5em 2em;
+  --c-button-border-radius: var(--radius-s);
+  --c-button-border-style: solid;
+  --c-button-border-width: 0.0625em;
+  --c-button-border-color: var(--c-button-background-color);
+  --c-button-grid-template-columns: auto;
+  --c-button-grid-template-areas: "text";
+  --c-button-grid-gap: 0.5em;
+  --c-button-min-height: 3em;
+
+  display: inline-block;
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden; // Necesary if button has radius
+  color: var(--c-button-color);
+  font-size: var(--c-button-font-size);
+  border-radius: var(--c-button-border-radius);
+  border-style: var(--c-button-border-style);
+  border-width: var(--c-button-border-width);
+  border-color: var(--c-button-border-color);
+  padding: var(--c-button-border-separation);
+  transition: all 0.3s;
+
+  &__inner {
+    display: grid;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    grid-template-columns: var(--c-button-grid-template-columns);
+    grid-template-areas: var(--c-button-grid-template-areas);
+    grid-gap: var(--c-button-grid-gap);
+    color: var(--c-button-color);
+    background-color: var(--c-button-background-color);
+    padding: var(--c-button-padding);
+    min-height: calc(var(--c-button-min-height) - (var(--c-button-border-width) * 2) - (var(--c-button-border-separation) * 2));
+    transition: all 0.3s;
+  }
+
+  &__text {
+    grid-area: text;
+    opacity: var(--c-button-text-opacity, 1);
+  }
+
+  &__icon {
+    grid-area: icon;
+    font-size: 1.2em;
+    opacity: var(--c-button-icon-opacity, 1);
+
+    &::before {
+      content: var(--c-button-icon, var(--c-icon-unicode));
+    }
+  }
+
+  @include c-button-hover($this) {
+    --c-button-background-color: var(--color-primary-light);
+  }
+
+  &--inverted {
+    --c-button-background-color: transparent;
+    --c-button-color: var(--color-primary);
+    --c-button-border-color: var(--color-primary);
+
+    @include c-button-hover($this) {
+      --c-button-color: var(--color-shade-0);
+      --c-button-border-color: var(--color-primary-light);
+    }
+  }
+
+  &--is-disabled,
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &--is-loading {
+    --c-button-loading-display: block;
+    --c-button-text-opacity: 0;
+    --c-button-icon-opacity: 0;
+
+    pointer-events: none;
+  }
+
+  &--icon {
+    --c-button-grid-template-columns: auto;
+    --c-button-grid-template-areas: "icon";
+    --c-button-padding: 0.5em 1em;
+  }
+
+  &--has-icon-left {
+    --c-button-grid-template-columns: auto auto;
+    --c-button-grid-template-areas: "icon text";
+  }
+
+  &--has-icon-right {
+    --c-button-grid-template-columns: auto auto;
+    --c-button-grid-template-areas: "text icon";
+  }
+}

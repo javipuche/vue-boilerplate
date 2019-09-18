@@ -1,0 +1,271 @@
+/* -----------------------------------------------------------------------------
+ * MEGAMENU
+ */
+
+@mixin fake-bg {
+  content: "";
+  width: var(--space-xs);
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  background-color: var(--c-megamenu-color-fake-bg);
+}
+
+.c-megamenu {
+  $this: &;
+  $breakpoint: 1200px;
+
+  --c-megamenu-color-triangle: var(--color-shade-200);
+  --c-megamenu-color-fake-bg: var(--color-shade-100);
+  --c-megamenu-background-color-nav: var(--color-primary);
+
+  @include breakpoint($breakpoint) {
+    --js-megamenu-enable-default-open-navigation: "true";
+    --js-megamenu-enable: "true";
+
+    box-shadow: var(--shadow-distant);
+    max-width: var(--wrapper-l);
+    width: calc(100% - var(--space-l));
+    height: px-to-em(704px);
+    max-height: 60vh;
+    border-top: var(--space-3xs) solid var(--color-secondary);
+  }
+
+  &.is-active {
+    & > #{$this}__nav {
+      @include breakpoint($breakpoint down) {
+        transform: translate(0);
+      }
+    }
+  }
+
+  &__nav {
+    background-color: var(--c-megamenu-background-color-nav);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    @include breakpoint($breakpoint down) {
+      transform: translateX(100%);
+      transition: transform 0.3s;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    @include breakpoint($breakpoint) {
+      --c-megamenu-background-color-nav: var(--color-shade-200);
+
+      padding-top: var(--space-m);
+      padding-bottom: var(--space-m);
+      width: 15%;
+      overflow-y: auto;
+    }
+
+    &::before {
+      @include breakpoint($breakpoint) {
+        @include fake-bg;
+      }
+    }
+
+    & & {
+      @include breakpoint($breakpoint) {
+        --c-megamenu-color-triangle: var(--color-shade-100);
+        --c-megamenu-background-color-nav: var(--color-shade-100);
+        --c-megamenu-color-fake-bg: var(--color-shade-0);
+
+        left: 15%;
+        width: 20%;
+        display: none;
+      }
+    }
+
+    &.has-scroll-hidden {
+      @include breakpoint($breakpoint down) {
+        overflow-y: hidden;
+      }
+    }
+  }
+
+  &__nav-list {
+  }
+
+  &__nav-item {
+    & + & {
+      @include breakpoint($breakpoint down) {
+        border-top: 0.0625em solid var(--color-primary-dark-200);
+      }
+    }
+
+    &.is-active {
+      & > #{$this}__nav {
+        @include breakpoint($breakpoint down) {
+          transform: translateX(0);
+        }
+
+        @include breakpoint($breakpoint) {
+          display: block;
+        }
+      }
+
+      & > #{$this}__content {
+        @include breakpoint($breakpoint down) {
+          transform: translateX(0);
+        }
+
+        @include breakpoint($breakpoint) {
+          display: block;
+        }
+      }
+
+      & > #{$this}__nav-link {
+        @include breakpoint($breakpoint) {
+          position: relative;
+          color: var(--color-quaternary);
+
+          #{$this}__nav-link-text {
+            text-transform: uppercase;
+            font-weight: var(--font-weight-semi-bold);
+          }
+
+          &::before {
+            @include triangle('right', var(--c-megamenu-color-triangle), var(--space-xs));
+
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+          }
+        }
+      }
+    }
+
+    &--back {
+      @include breakpoint($breakpoint) {
+        display: none;
+      }
+    }
+  }
+
+  &__nav-link {
+    display: flex;
+    align-items: baseline;
+    width: 100%;
+    text-align: inherit;
+    transition: color 0.3s;
+    padding: var(--space-s) var(--space-m);
+
+    @include breakpoint($breakpoint) {
+      padding: var(--space-xs) var(--space-xl) var(--space-xs) var(--space-l);
+      color: var(--color-primary);
+    }
+
+    &:active,
+    &:focus,
+    &:hover {
+      @include breakpoint($breakpoint) {
+        color: var(--color-quaternary);
+      }
+    }
+
+    &--back {
+      color: var(--color-shade-0);
+      display: flex;
+      align-items: center;
+      width: 100%;
+      background-color: var(--color-primary-dark-200);
+
+      #{$this}__nav-link-text {
+        margin: auto;
+        padding-right: var(--space-m);
+      }
+
+      @include breakpoint($breakpoint) {
+        display: none;
+      }
+    }
+  }
+
+  &__nav-link-text {
+    font-size: var(--font-size-s);
+
+    @include breakpoint($breakpoint) {
+      line-height: var(--line-height-2xl);
+    }
+  }
+
+  &__nav-link-icon {
+    margin-left: auto;
+    padding-left: var(--space-xs);
+    font-size: var(--font-size-xs);
+
+    &:not(&--back) {
+      @include breakpoint($breakpoint) {
+        display: none;
+      }
+    }
+
+    &--back {
+      margin-left: 0;
+      padding-left: 0;
+      padding-right: var(--space-xs);
+    }
+  }
+
+  &__content {
+    background-color: var(--color-primary);
+    color: var(--color-shade-1300);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+
+    @include breakpoint($breakpoint down) {
+      transform: translateX(100%);
+      transition: transform 0.3s;
+      overflow-x: hidden;
+    }
+
+    @include breakpoint($breakpoint) {
+      left: 35%;
+      width: 65%;
+      display: none;
+      background-color: var(--color-shade-0);
+    }
+  }
+
+  &__content-box {
+    padding: var(--space-m);
+
+    @include breakpoint($breakpoint) {
+      padding: var(--space-l);
+    }
+  }
+
+  &__title {
+    margin-bottom: var(--space-s);
+
+    &-text {
+      color: var(--color-shade-0);
+      text-transform: uppercase;
+      font-weight: var(--font-weight-bold);
+      font-size: var(--font-size-s);
+
+      @include breakpoint($breakpoint) {
+        color: var(--color-primary);
+      }
+    }
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(px-to-em(180px), 1fr));
+    grid-gap: var(--space-l) var(--space-s);
+  }
+}

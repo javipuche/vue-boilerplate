@@ -1,0 +1,20 @@
+@import "c-form--booking-transfers";
+
+.c-form {
+  $this: &;
+
+  --c-form-grid-template-columns: 1fr;
+  --c-form-grid-gap: var(--space-xs);
+
+  &__items {
+    display: grid;
+    grid-template-columns: var(--c-form-grid-template-columns);
+    grid-template-areas: var(--c-form-grid-template-areas, none);
+    grid-gap: var(--c-form-grid-gap);
+  }
+
+  /* Products
+   * ------------------------------------------------------------------------ */
+
+  @include c-form--booking-transfers($this);
+}

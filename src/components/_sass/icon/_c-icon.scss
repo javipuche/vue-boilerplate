@@ -1,0 +1,26 @@
+/* -----------------------------------------------------------------------------
+ * ICON
+ */
+
+.c-icon {
+  --c-icon-color: currentColor;
+
+  font-family: var(--font-family-icons) !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  display: block;
+
+  @each $class, $icon in $f-icons {
+    &--#{$class} {
+      --c-icon-unicode: #{$icon};
+
+      &::before {
+        content: var(--c-icon-unicode);
+        color: var(--c-icon-color);
+      }
+    }
+  }
+}

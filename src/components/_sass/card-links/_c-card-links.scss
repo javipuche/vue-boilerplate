@@ -1,0 +1,89 @@
+/* -----------------------------------------------------------------------------
+ * CARD LINKS
+ */
+
+.c-card-links {
+  $this: &;
+  $breakpoint: 1200px;
+
+  display: flex;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-shade-0);
+    width: 100%;
+  }
+
+  &__media {
+    margin-bottom: var(--space-s);
+  }
+
+  &__picture {
+    @include ratio(16/8);
+
+    img {
+      @include ratio-content;
+
+      object-fit: cover;
+    }
+  }
+
+  &__title {
+    color: var(--color-quaternary);
+    font-weight: var(--font-weight-bold);
+  }
+
+  &__list {
+    margin-top: var(--space-s);
+    margin-bottom: var(--space-s);
+  }
+
+  &__list-item {
+    margin-bottom: var(--space-xs);
+  }
+
+  &__text {
+    font-size: var(--font-size-s);
+  }
+
+  &__num {
+    font-weight: var(--font-weight-bold);
+    margin-left: var(--space-2xs);
+  }
+
+  &__link {
+    margin-top: auto;
+    font-size: var(--font-size-s);
+  }
+
+  &--mobile {
+    @include breakpoint($breakpoint down) {
+      box-shadow: var(--shadow-distant);
+      overflow: hidden;
+      border-radius: var(--radius-s);
+    }
+
+    #{$this} {
+      &__inner {
+        @include breakpoint($breakpoint down) {
+          padding: var(--space-s);
+        }
+      }
+
+      &__media {
+        @include breakpoint($breakpoint down) {
+          margin-top: calc(var(--space-s) * -1);
+          margin-left: calc(var(--space-s) * -1);
+          margin-right: calc(var(--space-s) * -1);
+        }
+      }
+
+      &__picture {
+        @include breakpoint($breakpoint down) {
+          @include ratio-override(16,5);
+        }
+      }
+    }
+  }
+}

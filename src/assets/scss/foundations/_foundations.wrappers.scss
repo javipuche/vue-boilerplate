@@ -1,0 +1,23 @@
+/* -----------------------------------------------------------------------------
+ * WRAPPERS
+ */
+
+@mixin f-wrappers {
+  --wrapper-xs: #{px-to-em((400px))};
+  --wrapper-s: #{px-to-em((700px))};
+  --wrapper-m: #{px-to-em((1000px))};
+  --wrapper-l: #{px-to-em((1366px))};
+  --wrapper-xl: #{px-to-em((1600px))};
+  --wrapper-2xl: #{px-to-em((1920px))};
+}
+
+// Map
+
+$f-wrappers: (
+  'xs': var(--wrapper-xs),
+  's': var(--wrapper-s),
+  'm': var(--wrapper-m),
+  'l': var(--wrapper-l),
+  'xl': var(--wrapper-xl),
+  '2xl': var(--wrapper-2xl)
+) !default;

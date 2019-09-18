@@ -1,0 +1,17 @@
+/* -----------------------------------------------------------------------------
+ * SHADOWS
+ */
+
+@mixin f-shadows {
+  --shadow-distant: 0 #{px-to-em(2px)} #{px-to-em(8px)} rgba(0, 0, 0, 0.15);
+  --shadow-close: 0 #{px-to-em(1px)} #{px-to-em(2px)} 0 rgba(0, 0, 0, 0.15);
+  --shadow-subtle: 0 0 #{px-to-em(1px)} #{px-to-em(1px)} rgba(0, 0, 0, 0.15);
+}
+
+// Map
+
+$f-shadows: (
+  'distant': var(--shadow-distant),
+  'close': var(--shadow-close),
+  'subtle': var(--shadow-subtle)
+) !default;

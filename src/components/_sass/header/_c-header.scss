@@ -1,0 +1,246 @@
+.c-header {
+  $this: &;
+  $breakpoint: 1200px;
+
+  --c-header-background-color: var(--color-shade-0);
+  --c-header-box-shadow: var(--shadow-distant);
+  --c-header-height: 4.5em;
+
+  background-color: var(--c-header-background-color);
+  box-shadow: var(--c-header-box-shadow);
+  position: relative;
+  z-index: var(--z-index-queen);
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    padding: 0.5em 1em;
+    position: relative;
+
+    @include breakpoint($breakpoint down) {
+      height: var(--c-header-height);
+    }
+
+    @include breakpoint($breakpoint) {
+      grid-template-columns: auto 1fr repeat(3, auto);
+      grid-template-areas:
+        "logo . phone origin account"
+        "nav nav nav nav nav";
+    }
+  }
+
+  &__logo {
+    @include breakpoint($breakpoint) {
+      grid-area: logo;
+    }
+
+    &-link {
+      display: inline-block;
+    }
+
+    &-picture {
+      img {
+        @include breakpoint($breakpoint down) {
+          max-height: calc(var(--c-header-height) - 1em);
+        }
+      }
+    }
+  }
+
+  &__nav {
+    background-color: var(--color-primary);
+    color: var(--color-shade-0);
+
+    @include breakpoint($breakpoint down) {
+      width: 100%;
+      max-width: 22.5em;
+      position: absolute;
+      right: 0;
+      height: calc(100vh - var(--c-header-height));
+      top: var(--c-header-height);
+      box-shadow: var(--c-header-box-shadow);
+      transform: translateX(100%);
+      overflow: hidden auto;
+      transition: transform 0.3s;
+    }
+
+    @include breakpoint($breakpoint) {
+      grid-area: nav;
+      margin: 0.5em -1em -0.5em -1em;
+    }
+
+    &.is-active {
+      @include breakpoint($breakpoint down) {
+        transform: translateX(0);
+      }
+    }
+
+    &.has-scroll-hidden {
+      @include breakpoint($breakpoint down) {
+        overflow-y: hidden;
+      }
+    }
+  }
+
+  &__nav-list {
+    position: relative;
+
+    @include breakpoint($breakpoint) {
+      display: flex;
+    }
+  }
+
+  &__nav-item {
+    & + & {
+      @include breakpoint($breakpoint down) {
+        border-top: 0.0625em solid var(--color-primary-dark-100);
+      }
+    }
+
+    &.is-active {
+      & > #{$this}__megamenu {
+        @include breakpoint($breakpoint) {
+          transform: translateX(-50%) rotateX(0);
+          opacity: 1;
+          pointer-events: auto;
+        }
+
+        & > nav {
+          @include breakpoint($breakpoint down) {
+            transform: translateX(0);
+          }
+        }
+      }
+    }
+
+    &.is-active,
+    &:active,
+    &:hover {
+      #{$this}__nav-link {
+        @include breakpoint($breakpoint) {
+          background-color: var(--color-secondary);
+        }
+      }
+    }
+  }
+
+  &__nav-link {
+    display: flex;
+    align-items: baseline;
+    padding: var(--space-s) var(--space-m);
+    width: 100%;
+    text-align: inherit;
+
+    @include breakpoint($breakpoint) {
+      text-transform: uppercase;
+      transition: background-color 0.3s;
+    }
+  }
+
+  &__nav-link-text {
+    font-size: var(--font-size-s);
+    font-weight: var(--font-weight-semi-bold);
+  }
+
+  &__nav-link-icon {
+    margin-left: auto;
+    padding-left: var(--space-xs);
+    font-size: var(--font-size-xs);
+
+    &:not(&--back) {
+      .c-icon {
+        &::before {
+          @include breakpoint($breakpoint down) {
+            transform: rotate(-90deg);
+            display: block;
+          }
+        }
+      }
+    }
+
+    &--back {
+      margin-left: 0;
+      padding-left: 0;
+    }
+  }
+
+  &__megamenu {
+    @include breakpoint($breakpoint) {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%) rotateX(75deg);
+      transform-origin: top center;
+      top: 100%;
+      background-color: var(--color-shade-0);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+  }
+
+  &__item {
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-shade-1400);
+
+    &:not(:last-child):not(&--account):not(&--hamburger) {
+      margin-right: var(--space-s);
+
+      &::after {
+        content: "";
+        width: 0.0625em;
+        height: 1em;
+        background-color: currentColor;
+        display: block;
+        margin-left: var(--space-s);
+        color: var(--color-shade-400);
+      }
+    }
+
+    &-icon {
+      color: var(--color-secondary);
+    }
+
+    &--phone-number {
+      color: var(--color-secondary);
+      font-weight: var(--font-weight-bold);
+
+      @include breakpoint($breakpoint down) {
+        display: none;
+      }
+
+      @include breakpoint($breakpoint) {
+        grid-area: phone;
+      }
+    }
+
+    &--origin {
+      @include breakpoint($breakpoint down) {
+        display: none;
+      }
+
+      @include breakpoint($breakpoint) {
+        grid-area: origin;
+      }
+    }
+
+    &--account {
+      @include breakpoint($breakpoint down) {
+        display: none;
+      }
+
+      @include breakpoint($breakpoint) {
+        grid-area: account;
+      }
+    }
+
+    &--hamburger {
+      color: var(--color-primary);
+
+      @include breakpoint($breakpoint) {
+        display: none;
+      }
+    }
+  }
+}

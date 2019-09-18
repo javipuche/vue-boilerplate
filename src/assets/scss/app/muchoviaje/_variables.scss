@@ -1,0 +1,28 @@
+/* -----------------------------------------------------------------------------
+ * VARIABLES
+ * -----------------------------------------------------------------------------
+ * Aqui sólamente se colocaran las vaiables de CSS, no las de SASS. Estas
+ * últimas van en el archivo foundations.
+ */
+
+:root {
+  // Primary
+  --color-primary-hue: 206;
+  --color-primary-saturation: 100%;
+  --color-primary-lumnosity: 28%;
+
+  // Secondary
+  --color-secondary-hue: 333;
+  --color-secondary-saturation: 85%;
+  --color-secondary-lumnosity: 55%;
+
+  // Tertiary
+  --color-tertiary-hue: 76;
+  --color-tertiary-saturation: 73%;
+  --color-tertiary-lumnosity: 43%;
+
+  // Quaternary
+  --color-quaternary-hue: 202;
+  --color-quaternary-saturation: 78%;
+  --color-quaternary-lumnosity: 63%;
+}

@@ -1,0 +1,33 @@
+/* -----------------------------------------------------------------------------
+ * FOUNDATIONS
+ */
+
+@import "foundations.spaces";
+@import "foundations.font-families";
+@import "foundations.font-sizes";
+@import "foundations.font-weights";
+@import "foundations.line-heights";
+@import "foundations.colors";
+@import "foundations.radiuses";
+@import "foundations.shadows";
+@import "foundations.wrappers";
+@import "foundations.icons";
+@import "foundations.z-index";
+@import "foundations.grid";
+@import "foundations.custom"; // Always lastest
+
+:root {
+  @include f-spaces;
+  @include f-font-families;
+  @include f-font-weights;
+  @include f-font-sizes;
+  @include f-line-heights;
+  @include f-colors;
+  @include f-radiuses;
+  @include f-shadows;
+  @include f-wrappers;
+  @include f-icons;
+  @include f-z-index;
+  @include f-grids;
+  @include f-custom; // Always lastest
+}

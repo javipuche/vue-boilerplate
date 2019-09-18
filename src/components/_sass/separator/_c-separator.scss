@@ -1,0 +1,14 @@
+/* -----------------------------------------------------------------------------
+ * SEPARATOR
+ */
+
+.c-separator {
+  $this: &;
+
+  @each $name, $size in $f-spaces {
+    &--#{$name} {
+      margin-top: #{$size};
+      margin-bottom: #{$size};
+    }
+  }
+}

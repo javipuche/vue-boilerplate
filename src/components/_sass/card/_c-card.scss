@@ -1,0 +1,43 @@
+/* -----------------------------------------------------------------------------
+ * CARD
+ */
+
+.c-card {
+  --c-card-box-shadow: none;
+  --c-card-background-color: var(--color-shade-0);
+  --c-card-included-color: var(--color-shade-1200);
+
+  box-shadow: var(--c-card-box-shadow);
+  background-color: var(--c-card-background-color);
+
+  &__picture {
+    @include ratio(16, 9);
+    margin: 0 auto;
+    max-width: 320px;
+    width: 100%;
+    img {
+      @include ratio-content;
+      object-fit: cover;
+    }
+  }
+
+  &__title {
+    font-size: var(--font-size-3xl);
+    line-height: var(--line-height-2xl);
+    text-align: center;
+    margin-bottom: var(--space-xs);
+  }
+
+  &__included {
+    color: var(--c-card-included-color);
+    justify-content: center;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: var(--space-s);
+    text-transform: uppercase;
+
+    .c-icon {
+      --c-icon-color: var(--color-primary);
+    }
+  }
+}

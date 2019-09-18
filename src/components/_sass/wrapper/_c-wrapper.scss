@@ -1,0 +1,37 @@
+/* -----------------------------------------------------------------------------
+ * WRAPPER
+ */
+
+.c-wrapper {
+  $this: &;
+
+  --c-wrapper-gutter: var(--space-xs);
+
+  @include breakpoint(s) {
+    --c-wrapper-gutter: var(--space-s);
+  }
+
+  @include breakpoint(l) {
+    --c-wrapper-gutter: var(--space-l);
+  }
+
+  @include breakpoint(xl) {
+    --c-wrapper-gutter: var(--space-2xl);
+  }
+
+  &__inner {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    padding-left: var(--c-wrapper-gutter);
+    padding-right: var(--c-wrapper-gutter);
+  }
+
+  @each $name, $size in $f-wrappers {
+    &--#{$name} {
+      #{$this}__inner {
+        max-width: #{$size};
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+/* -----------------------------------------------------------------------------
+ * BREADCRUMBS
+ */
+
+.c-breadcrumbs {
+  &__inner {
+    display: flex;
+    align-items: center;
+  }
+
+  &__link {
+    cursor: pointer;
+    margin-right: 0.5em;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &.is-disabled {
+      pointer-events: none;
+    }
+  }
+}

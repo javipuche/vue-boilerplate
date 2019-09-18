@@ -1,0 +1,50 @@
+/* -----------------------------------------------------------------------------
+ * GRID
+ */
+
+.c-grid {
+  $this: &;
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  &__column {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-gap: 8px;
+  }
+
+  @each $name, $columns in $f-grids {
+    &--cols-#{$name} {
+      #{$this}__inner {
+        @if (number($name) > 1) {
+          @include breakpoint(s) {
+            grid-template-columns: var(--grid-2);
+          }
+        }
+
+        @if (number($name) > 2) {
+          @include breakpoint(m) {
+            grid-template-columns: var(--grid-3);
+          }
+        }
+
+        @if (number($name) > 3) {
+          @include breakpoint(l) {
+            grid-template-columns: #{$columns};
+          }
+        }
+      }
+    }
+  }
+
+  @each $name, $gap in $f-spaces {
+    &--gap-#{$name} {
+      #{$this}__inner {
+        grid-gap: #{$gap};
+      }
+    }
+  }
+}
