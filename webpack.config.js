@@ -145,7 +145,8 @@ const webpackConfig = () => {
                 open: true,
                 compress: false,
                 hot: true,
-                port: 3000
+                port: 3000,
+                historyApiFallback: true
             }
         })
     }

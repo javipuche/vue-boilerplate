@@ -7,3 +7,11 @@
     margin: 0;
   }
 </style>
+
+<script>
+    export default {
+        updated () {
+            window.Pegasus.init()
+        }
+    }
+</script>
