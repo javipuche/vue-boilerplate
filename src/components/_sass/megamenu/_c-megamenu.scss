@@ -54,6 +54,8 @@
       transition: transform 0.3s;
       overflow-y: auto;
       overflow-x: hidden;
+      will-change: transform;
+      z-index: 1;
     }
 
     @include breakpoint($breakpoint) {

@@ -1,7 +1,7 @@
 import 'lazysizes'
 import Carousel from 'modules/carousel/Carousel'
 import TabsResize from 'modules/resizeTabs/resizeTabs'
-import Header from 'modules/header/header'
+import Header from 'modules/header/headerMix'
 import AutoTrigger from 'modules/AutoTrigger'
 
 const init = () =>
