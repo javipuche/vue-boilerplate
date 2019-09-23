@@ -1,6 +1,6 @@
 <template>
     <div>
-        <header-site />
+        <Header />
 
         <slot />
 
@@ -9,11 +9,11 @@
 </template>
 
 <script>
-    import HeaderSite from '@/components/Header/Header'
+    import Header from '@/components/Header/Header'
 
     export default {
         components: {
-            HeaderSite
+            Header
         },
         props: {
             brand: {

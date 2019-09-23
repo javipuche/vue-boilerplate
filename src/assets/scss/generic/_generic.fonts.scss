@@ -31,8 +31,8 @@ $fonts-families: (
       font-family: $font-family;
       src:
         local(nth($opts, 3)),
-        url('~fonts/#{$font}.woff2') format('woff2'),
-        url('~fonts/#{$font}.woff') format('woff');
+        url('~assets/fonts/#{$font}.woff2') format('woff2'),
+        url('~assets/fonts/#{$font}.woff') format('woff');
       font-weight: nth($opts, 1);
       font-style: nth($opts, 2);
       font-display: swap;

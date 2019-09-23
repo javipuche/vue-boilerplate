@@ -1,19 +1,19 @@
 <template>
-    <mega-menu-nav>
-        <mega-menu-nav-list>
-            <mega-menu-button-back :text="textButtonBack" />
-            <mega-menu-nav-item v-for="item in items" :key="item.id">
-                <mega-menu-nav-link :href="item.href" :text="item.text" />
-                <mega-menu-navigation v-if="hasGrandSons(item.children)" :items="item.children" :text-button-back="item.text" />
-                <mega-menu-content v-if="!hasGrandSons(item.children) && item.children" :text-button-back="item.text">
-                    <mega-menu-title :text="item.text" />
-                    <mega-menu-items>
-                        <card-links v-for="cardLinkItem in item.children" :key="cardLinkItem.id" />
-                    </mega-menu-items>
-                </mega-menu-content>
-            </mega-menu-nav-item>
-        </mega-menu-nav-list>
-    </mega-menu-nav>
+    <MegaMenuNav>
+        <MegaMenuNavList>
+            <MegaMenuButtonBack :text="textButtonBack" />
+            <MegaMenuNavItem v-for="item in items" :key="item.id">
+                <MegaMenuNavLink :href="item.href" :text="item.text" />
+                <MegaMenuNavigation v-if="hasGrandSons(item.children)" :items="item.children" :text-button-back="item.text" />
+                <MegaMenuContent v-if="!hasGrandSons(item.children) && item.children" :text-button-back="item.text">
+                    <MegaMenuTitle :text="item.text" />
+                    <MegaMenuItems>
+                        <CardLinks v-for="cardLinkItem in item.children" :key="cardLinkItem.id" />
+                    </MegaMenuItems>
+                </MegaMenuContent>
+            </MegaMenuNavItem>
+        </MegaMenuNavList>
+    </MegaMenuNav>
 </template>
 
 <script>
@@ -25,6 +25,7 @@
     import MegaMenuTitle from '@/components/MegaMenu/MegaMenuTitle.vue'
     import MegaMenuItems from '@/components/MegaMenu/MegaMenuItems.vue'
     import MegaMenuButtonBack from '@/components/MegaMenu/MegaMenuButtonBack.vue'
+    import MegaMenuNavigation from '@/components/MegaMenu/MegaMenuNavigation.vue'
     import CardLinks from '@/components/CardLinks/CardLinks.vue'
 
     export default {
@@ -38,6 +39,7 @@
             MegaMenuTitle,
             MegaMenuItems,
             MegaMenuButtonBack,
+            MegaMenuNavigation,
             CardLinks
         },
         props: {

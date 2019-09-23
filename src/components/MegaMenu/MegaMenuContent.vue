@@ -1,6 +1,6 @@
 <template>
     <div class="c-megamenu__content js-header__navigation-content">
-        <mega-menu-button-back :text="textButtonBack" />
+        <MegaMenuButtonBack :text="textButtonBack" />
         <div class="c-megamenu__content-box">
             <slot />
         </div>

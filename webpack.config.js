@@ -23,12 +23,11 @@ const webpackConfig = () => {
             publicPath: '/'
         },
         resolve: {
-            extensions: ['.scss', '.css', '.js', '.json', '.vue'],
+            extensions: ['.js', '.json', '.vue', '.scss'],
             alias: {
                 '@': resolve('./src'),
+                assets: resolve('./src/assets'),
                 scss: resolve('./src/assets/scss'),
-                fonts: resolve('./src/assets/fonts'),
-                images: resolve('./src/assets/images'),
                 components: resolve('./src/components'),
                 modules: resolve('./src/assets/js/modules'),
                 utils: resolve('./src/assets/js/utils'),

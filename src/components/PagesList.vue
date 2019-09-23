@@ -8,14 +8,14 @@
                     <strong>{{ item.name }}</strong>
                 </div>
 
-                <router-link v-if="!item.children" :to="{ name: item.name }" class="list__link">
+                <RouterLink v-if="!item.children" :to="{ name: item.name }" class="list__link">
                     {{ item.name }}
-                </router-link>
+                </RouterLink>
 
                 <PagesList v-if="item.children" :items="item.children" :is-first="false">
-                    <router-link :to="{ name: item.name }" class="list__link">
+                    <RouterLink :to="{ name: item.name }" class="list__link">
                         {{ item.name }}
-                    </router-link>
+                    </RouterLink>
                 </PagesList>
             </li>
         </template>

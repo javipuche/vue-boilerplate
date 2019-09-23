@@ -1,9 +1,17 @@
 <template>
     <div class="c-header__logo">
         <a href="#" class="c-header__logo-link">
-            <picture class="c-picture c-header__logo-picture">
-                <img class="c-picture__img" src="@/assets/images/logos/muchoviaje.png" alt="Logo">
-            </picture>
+            <Picture class="c-header__logo-picture" src="logos/muchoviaje.png" alt="Logo" />
         </a>
     </div>
 </template>
+
+<script>
+    import Picture from '@/components/Picture/Picture.vue'
+
+    export default {
+        components: {
+            Picture
+        }
+    }
+</script>
