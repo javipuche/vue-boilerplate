@@ -2,13 +2,18 @@
     <a :href="href" class="c-megamenu__nav-link">
         <span class="c-megamenu__nav-link-text">{{ text }}</span>
         <span class="c-megamenu__nav-link-icon">
-            <span class="c-icon" :class="`c-icon--${icon}`"></span>
+            <Icon :icon="icon" />
         </span>
     </a>
 </template>
 
 <script>
+    import Icon from '@/components/Icon/Icon.vue'
+
     export default {
+        components: {
+            Icon
+        },
         props: {
             href: {
                 type: String,

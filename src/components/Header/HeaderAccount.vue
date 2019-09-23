@@ -1,6 +1,6 @@
 <template>
     <div class="c-header__item c-header__item--account">
-        <IconText icon="avatar" text="Mi cuenta" />
+        <IconText icon="avatar" text="Mi cuenta" icon-class="c-header__item-icon" />
     </div>
 </template>
 
