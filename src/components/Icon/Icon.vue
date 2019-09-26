@@ -12,3 +12,9 @@
         }
     }
 </script>
+
+<style lang="scss">
+  .toro {
+    color: red;
+  }
+</style>

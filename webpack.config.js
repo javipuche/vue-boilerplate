@@ -3,7 +3,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin')
 const entries = require('./config/entries')
 
 const isProduction = process.argv.indexOf('--production') >= 0
@@ -13,13 +12,13 @@ const webpackConfig = () => {
         stats: 'minimal',
         entry: Object.assign(
             {
-                'bundle/bundle': './src/main.js'
+                bundle: './src/main.js'
             },
             entries()
         ),
         output: {
             path: resolve('./dist'),
-            filename: `[name].js`,
+            filename: `assets/js/[name].js`,
             publicPath: '/'
         },
         resolve: {
@@ -74,6 +73,7 @@ const webpackConfig = () => {
                             loader: 'sass-loader',
                             options: {
                                 sourceMap: !isProduction,
+                                prependData: '$red: #000;',
                                 sassOptions: {
                                     outputStyle: isProduction ? 'compressed' : 'expanded',
                                     includePaths: [
@@ -88,46 +88,47 @@ const webpackConfig = () => {
                 {
                     test: /\.(gif|png|jpe?g|svg)$/i,
                     exclude: /(a-z A-Z 0-9)*\/(font?s)\//,
-                    use: [{
-                        loader: 'file-loader',
-                        options: {
-                            name: '[name].[ext]',
-                            outputPath: 'assets/images',
-                            publicPath: '/assets/images'
+                    use: [
+                        {
+                            loader: 'file-loader',
+                            options: {
+                                name: '[name].[ext]',
+                                outputPath: 'assets/images',
+                                publicPath: '/assets/images'
+                            }
+                        },
+                        {
+                            loader: 'image-webpack-loader',
+                            options: {
+                                bypassOnDebug: true
+                            }
                         }
-                    },
-                    {
-                        loader: 'image-webpack-loader',
-                        options: {
-                            bypassOnDebug: true
-                        }
-                    }
                     ]
                 },
                 {
                     test: /\.(eot|ttf|svg|woff|woff2)$/i,
                     exclude: /(a-z A-Z 0-9)*\/(img|image?s)\//,
-                    use: [{
-                        loader: 'file-loader',
-                        options: {
-                            name: '[name].[ext]',
-                            outputPath: 'assets/fonts',
-                            publicPath: '/assets/fonts'
+                    use: [
+                        {
+                            loader: 'file-loader',
+                            options: {
+                                name: '[name].[ext]',
+                                outputPath: 'assets/fonts',
+                                publicPath: '/assets/fonts'
+                            }
                         }
-                    }]
+                    ]
                 }
             ]
         },
         plugins: [
             new MiniCssExtractPlugin({
-                filename: `[name].css`
+                filename: `assets/css/[name].css`
             }),
             new HtmlWebpackPlugin({
                 template: './src/index.html',
-                filename: 'index.html',
-                excludeAssets: [/styles.*.(css|js)/]
+                filename: 'index.html'
             }),
-            new HtmlWebpackExcludeAssetsPlugin(),
             new VueLoaderPlugin()
         ],
         performance: {

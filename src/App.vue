@@ -1,12 +1,8 @@
 <template>
-    <RouterView />
+    <body>
+        <RouterView />
+    </body>
 </template>
-
-<style lang="scss">
-  body {
-    margin: 0;
-  }
-</style>
 
 <script>
     export default {
